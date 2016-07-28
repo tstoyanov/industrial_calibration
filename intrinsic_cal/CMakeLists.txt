@@ -29,9 +29,10 @@ generate_messages(
     std_msgs
 )
 
-
 catkin_package(
-  CATKIN_DEPENDS
+  INCLUDE_DIRS
+    include
+ CATKIN_DEPENDS
     geometry_msgs
     industrial_extrinsic_cal
     message_runtime
@@ -44,17 +45,19 @@ catkin_package(
     CERES
 )
 
-
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
   ${CERES_INCLUDE_DIRS}
 )
-
 
 add_executable(rail_ical src/rail_cal.cpp)
 add_dependencies(rail_ical ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(rail_ical ${catkin_LIBRARIES} ${CERES_LIBRARIES})
 
+add_executable(curve_fit src/curve_fit.cpp)
+add_dependencies(curve_fit ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(curve_fit ${catkin_LIBRARIES} ${CERES_LIBRARIES})
 
 install(
   TARGETS
