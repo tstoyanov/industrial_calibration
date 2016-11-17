@@ -25,7 +25,7 @@ find_package(Boost REQUIRED)
 find_package(Ceres REQUIRED)
 message("-- Found Ceres version ${CERES_VERSION}: ${CERES_INCLUDE_DIRS}")
 
-find_package(OpenCV 2 REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 message("-- Found OpenCV version ${OpenCV_VERSION}: ${OpenCV_INCLUDE_DIRS}")
 
 find_package(PkgConfig REQUIRED)
@@ -158,13 +158,13 @@ add_executable(manual_calt_adjust               src/nodes/manual_calt_adjuster.c
 add_executable(mono_ex_cal                      src/nodes/mono_ex_cal.cpp)
 add_executable(mutable_joint_state_publisher    src/nodes/mutable_joint_state_publisher.cpp)
 add_executable(nist_analysis                    src/nodes/nist_analysis.cpp)
-add_executable(ros_robot_trigger_action_service src/nodes/ros_robot_scene_trigger_action_server.cpp)
+#add_executable(ros_robot_trigger_action_service src/nodes/ros_robot_scene_trigger_action_server.cpp)
 add_executable(service_node                     src/nodes/calibration_service.cpp)
 add_executable(trigger_service                  src/nodes/ros_scene_trigger_server.cpp)
 
 add_dependencies(camera_observer_scene_trigger    ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
 add_dependencies(mutable_joint_state_publisher    ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
-add_dependencies(ros_robot_trigger_action_service ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
+#add_dependencies(ros_robot_trigger_action_service ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
 add_dependencies(service_node                     ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
 add_dependencies(trigger_service                  ${catkin_EXPORTED_TARGETS} ${industrial_extrinsic_cal_EXPORTED_TARGETS})
 
@@ -173,7 +173,7 @@ target_link_libraries(manual_calt_adjust industrial_extrinsic_cal ${catkin_LIBRA
 target_link_libraries(mono_ex_cal ${catkin_LIBRARIES} ${CERES_LIBRARIES})
 target_link_libraries(mutable_joint_state_publisher ${catkin_LIBRARIES} ${yaml_cpp_LIBRARY})
 target_link_libraries(nist_analysis industrial_extrinsic_cal ${catkin_LIBRARIES} ${CERES_LIBRARIES})
-target_link_libraries(ros_robot_trigger_action_service ${catkin_LIBRARIES})
+#target_link_libraries(ros_robot_trigger_action_service ${catkin_LIBRARIES})
 target_link_libraries(service_node industrial_extrinsic_cal ${CERES_LIBRARIES})
 #target_link_libraries(test_obs industrial_extrinsic_cal ${yaml_cpp_LIBRARY} ${catkin_LIBRARIES} ${CERES_LIBRARIES})
 target_link_libraries(trigger_service ${catkin_LIBRARIES})
@@ -187,7 +187,7 @@ install(
     mono_ex_cal
     mutable_joint_state_publisher
     nist_analysis
-    ros_robot_trigger_action_service
+    #ros_robot_trigger_action_service
     service_node
     trigger_service
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

@@ -62,6 +62,7 @@
 #endif
 
 using namespace cv;
+using namespace std;
 
 /*
 *  CircleDetector

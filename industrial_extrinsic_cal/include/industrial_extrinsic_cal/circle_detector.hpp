@@ -50,7 +50,7 @@
 
 #include "opencv2/opencv.hpp"
 #include "opencv2/core/core.hpp"
-
+#include <limits>
 
 namespace cv {
 class CV_EXPORTS_W CircleDetector : public FeatureDetector
@@ -98,8 +98,8 @@ protected:
       double confidence;
   };
 
-  virtual void detectImpl( const Mat& image, vector<KeyPoint>& keypoints, const Mat& mask=Mat() ) const;
-  virtual void findCircles(const Mat &image, const Mat &binaryImage, vector<Center> &centers) const;
+  virtual void detectImpl( const Mat& image, std::vector<KeyPoint>& keypoints, const Mat& mask=Mat() ) const;
+  virtual void findCircles(const Mat &image, const Mat &binaryImage, std::vector<Center> &centers) const;
 
   Params params;
 };

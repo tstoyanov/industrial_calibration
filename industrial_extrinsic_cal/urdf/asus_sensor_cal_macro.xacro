@@ -34,7 +34,7 @@
 			</geometry>
 		</collision>
 	</link>
-		<link name="${prefix}_ir_link">
+		<link name="${prefix}_depth_link">
 		<visual>
 		<origin rpy="0 0 0" xyz="0 0 0"/>
 		<geometry>
@@ -52,7 +52,7 @@
 	</link>
 	<link name="${prefix}_rgb_frame"/>
 
-	<link name="${prefix}_ir_optical_frame"/>
+	<link name="${prefix}_depth_optical_frame"/>
 	<link name="${prefix}_rgb_optical_frame"/>
 	<!-- end of sensor links -->
 
@@ -67,18 +67,18 @@
 		<child link="${prefix}_frame"/>
 		<origin rpy="0 0 0" xyz="0 0 0"/>
 	</joint>
-	<joint name="${prefix}_ir_joint" type="fixed">
+	<joint name="${prefix}_depth_joint" type="fixed">
 		<parent link="${prefix}_frame"/>
-		<child link="${prefix}_ir_link"/>
+		<child link="${prefix}_depth_link"/>
 		<origin rpy="0 0 0" xyz="0 0 0"/>
 	</joint>
-	<joint name="${prefix}_ir_optical_frame_joint" type="fixed">
-		<parent link="${prefix}_ir_link"/>
-		<child link="${prefix}_ir_optical_frame"/>
+	<joint name="${prefix}_depth_optical_frame_joint" type="fixed">
+		<parent link="${prefix}_depth_link"/>
+		<child link="${prefix}_depth_optical_frame"/>
 		<origin rpy="-1.57 0 -1.57" xyz="0 0 0"/>
 	</joint>	
 	<joint name="${prefix}_rgb_joint" type="fixed">
-		<parent link="${prefix}_ir_link"/>
+		<parent link="${prefix}_depth_link"/>
 		<child link="${prefix}_rgb_link"/>
 		<origin rpy="0 0 0" xyz="0 -0.03 0"/>
 	</joint>
